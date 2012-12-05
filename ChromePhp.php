@@ -20,6 +20,7 @@
  *
  * @package ChromePhp
  * @author Craig Campbell <iamcraigcampbell@gmail.com>
+ * https://chrome.google.com/webstore/detail/chromephp/noaneddfkdjfnfdakjjmocngnfkfehhd
  */
 class ChromePhp
 {
@@ -128,7 +129,7 @@ class ChromePhp
     {
         $this->_php_version = phpversion();
         $this->_timestamp = $this->_php_version >= 5.1 ? $_SERVER['REQUEST_TIME'] : time();
-        $this->_json['request_uri'] = $_SERVER['REQUEST_URI'];
+        $this->_json['request_uri'] = @$_SERVER['REQUEST_URI'];
     }
 
     /**
@@ -435,3 +436,7 @@ class ChromePhp
         return $this->_settings[$key];
     }
 }
+
+class debug extends ChromePhp{}
+class console extends ChromePhp{}
+
